@@ -1,6 +1,14 @@
-name: Bash CI Test
+name: Bash CI/CD Test
 
-on: [push]
+on: 
+  push:
+    branches:
+      - "main"
+      - "master"
+  pull_request:
+    branches:
+      - "main"
+      - "master"
 
 jobs:
   build:
@@ -13,3 +21,18 @@ jobs:
       run: |
         chmod +x kontrol.sh
         ./kontrol.sh
+
+    - name: Ek kod kalitesi kontrolu (ShellCheck)
+      uses: ludeeus/action-shellcheck@2.0.0
+      with:
+        check_together: 'yes'
+  
+  deploy: 
+    needs: build 
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Sürüm veya Dagitim Adimi
+        run: |
+          echo "Testler ve kalite kontrolleri basariyla gecti!"
+          echo "Kod canli ortama veya GitHub Release alanina aktariliyor..."
