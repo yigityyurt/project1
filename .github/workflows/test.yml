@@ -1,0 +1,15 @@
+name: Bash CI TEST
+
+on: [push]
+
+jobs:
+  build:
+     runs-on:ubuntu-latest
+    
+     steps:
+     - uses: actions/checkout@v4
+
+     -name: Bash Betigini Calistir
+      run:
+       chmod +x kontrol.sh
+       ./kontrol.sh
