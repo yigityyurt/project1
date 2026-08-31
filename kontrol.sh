@@ -1,9 +1,15 @@
 #!/bin/bash
-echo "Test kontrolu yapiliyor.."
+echo "Test 1: Matematiksel sonuc bekleniyor.."
 if [ 2 -eq 2 ]; then
-    echo "Her sey yolunda, test basarili.."
-    exit 0
+    echo "Test 1: Basarili.."
 else 
-    echo "Hata var.."
+    echo "Test 1: Basarisiz.."
+    exit 1
+fi
+echo "Test 2: README var mi kontrol ediliyor"
+if [-f README.md]; then
+    echo:"Test 2: README var.."
+else  
+    echo:"Test 2: README yok.."
     exit 1
 fi
