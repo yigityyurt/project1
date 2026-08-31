@@ -7,7 +7,7 @@ else
     exit 1
 fi
 echo "Test 2: README var mi kontrol ediliyor"
-if [-f README.md]; then
+if [ -f README.md]; then
     echo:"Test 2: README var.."
 else  
     echo:"Test 2: README yok.."
